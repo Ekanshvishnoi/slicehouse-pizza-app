@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // (all your future routes — /api/auth, /api/orders, etc. — go here, between routes and the two lines below)
+app.use('/api/auth', authRoutes);
 
 // 404 + error handling — must be LAST
 app.use(notFound);
